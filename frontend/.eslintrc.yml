@@ -1,0 +1,43 @@
+env:
+  es2021: true
+  browser: true
+
+parserOptions:
+  ecmaVersion: 2021
+  sourceType: module
+
+extends:
+  - eslint:recommended
+  - plugin:react/recommended
+
+plugins:
+  - react
+
+settings:
+  react:
+    version: '17'
+
+rules:
+  no-multiple-empty-lines:
+    - error
+    - max: 1
+  no-var:
+    - error
+  no-console:
+    - error
+    - allow:
+      - warn
+      - error
+      - info
+  arrow-parens:
+    - error
+    - always
+  jsx-quotes:
+    - error
+    - prefer-double
+  react/prop-types:
+    - off
+  react/react-in-jsx-scope:
+    - off
+  react/display-name:
+    - off

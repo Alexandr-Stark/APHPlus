@@ -1,0 +1,61 @@
+{
+  "name": "aphplus-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=14 <15",
+    "npm": ">=6 <7"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "1.6.2",
+    "@testing-library/jest-dom": "5.15.1",
+    "@testing-library/react": "11.2.7",
+    "@testing-library/user-event": "12.8.3",
+    "husky": "7.0.4",
+    "lint-staged": "12.1.2",
+    "prop-types": "15.7.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-router": "6.0.2",
+    "react-scripts": "4.0.3",
+    "redux": "4.1.2",
+    "sass": "1.44.0",
+    "uuid": "8.3.2"
+  },
+  "scripts": {
+    "lint:editorconfig": "editorconfig-checker",
+    "lint:js": "npx eslint \"src/**/*.{js,jsx}\" --resolve-plugins-relative-to .",
+    "lint": "npm run lint:js",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npx lint-staged"
+    }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "editorconfig-checker": "4.0.2",
+    "eslint": "7.32.0"
+  }
+}
