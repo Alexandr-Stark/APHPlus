@@ -1,0 +1,92 @@
+.login {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 1) 100%
+      ),
+      url("https://assets.nflxext.com/ffe/siteui/vlv3/23c72870-12c8-4682-9f55-337a083ccfa7/b9e1ab57-b7cd-40aa-b451-4790759f9293/UA-en-20211129-popsignuptwoweeks-perspective_alpha_website_small.jpg");
+    background-size: cover;
+    position: relative;
+  
+    .top {
+      .wrapper {
+        padding: 20px 50px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+  
+        .logo {
+          height: 40px;
+        }
+      }
+    }
+  
+    .container {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+  
+      form {
+        width: 300px;
+        height: 350px;
+        padding: 30px;
+        border-radius: 5px;
+        background-color: rgba(0,0,0,.75);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+  
+        input {
+          height: 40px;
+          border-radius: 5px;    
+          background: #333;
+          color: white;
+          padding-left: 10px;
+          border: none;
+          &::placeholder {
+            color: #8c8c8c;
+          }
+        }
+  
+        button {
+          height: 40px;
+          border-radius: 5px;
+          background-color: red;
+          color: white;
+          border: none;
+          font-size: 18px;
+          font-weight: 500;
+          cursor: pointer;
+        }
+        span {
+            color: #737373;
+          a{
+            color: #fff;
+            cursor: pointer;
+            &:hover {
+                text-decoration: underline;
+            }
+          }
+        }
+        small {
+            color: #737373;
+          a{
+            color: #0071eb;;
+            cursor: pointer;
+            &:hover {
+                text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  }
