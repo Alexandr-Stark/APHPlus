@@ -4,7 +4,7 @@ import {
   } from "@material-ui/icons";
   import { useRef, useState } from "react";
   import ListItem from "../ListItem/ListItem";
-  import "./list.scss";
+  import list from "./list.module.scss";
   
   export default function List() {
     const [isMoved, setIsMoved] = useState(false);
@@ -25,15 +25,15 @@ import {
       }
     };
     return (
-      <div className="list">
-        <span className="listTitle">Continue to watch</span>
-        <div className="wrapper">
+      <div className={list.list}>
+        <span className={list.listTitle}>Continue to watch</span>
+        <div className={list.wrapper}>
           <ArrowBackIosOutlined
-            className="sliderArrow left"
+            className={`${list.sliderArrow} ${list.left}`}
             onClick={() => handleClick("left")}
             style={{ display: !isMoved && "none" }}
           />
-          <div className="container" ref={listRef}>
+          <div className={list.container} ref={listRef}>
             <ListItem index={0} />
             <ListItem index={1} />
             <ListItem index={2} />
@@ -46,7 +46,7 @@ import {
             <ListItem index={9} />
           </div>
           <ArrowForwardIosOutlined
-            className="sliderArrow right"
+            className={`${list.sliderArrow} ${list.right}`}
             onClick={() => handleClick("right")}
           />
         </div>

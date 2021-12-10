@@ -1,4 +1,4 @@
-import "./listitem.scss";
+import listitem from "./listitem.module.scss";
 import {
   PlayArrow,
   Add,
@@ -13,7 +13,7 @@ export default function ListItem({ index }) {
     "https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c0fd273d2c6d9a064f3ae35579b2bbdf&profile_id=139&oauth2_token_id=57447761";
   return (
     <div
-      className="listItem"
+      className={listitem.listItem}
       style={{ left: isHovered && index * 225 - 50 + index * 2.5 }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -25,23 +25,23 @@ export default function ListItem({ index }) {
       {isHovered && (
         <>
           <video src={trailer} autoPlay={true} loop />
-          <div className="itemInfo">
-            <div className="icons">
-              <PlayArrow className="icon" />
-              <Add className="icon" />
-              <ThumbUpAltOutlined className="icon" />
-              <ThumbDownOutlined className="icon" />
+          <div className={listitem.itemInfo}>
+            <div className={listitem.icons}>
+              <PlayArrow className={listitem.icon}/>
+              <Add className={listitem.icon}/>
+              <ThumbUpAltOutlined className={listitem.icon} />
+              <ThumbDownOutlined className={listitem.icon} />
             </div>
-            <div className="itemInfoTop">
+            <div className={listitem.itemInfoTop}>
               <span>1 hour 14 mins</span>
-              <span className="limit">+16</span>
+              <span className={listitem.limit}>+16</span>
               <span>1999</span>
             </div>
-            <div className="desc">
+            <div className={listitem.desc}>
               Lorem ipsum dolor, sit amet consectetur adipisicing elit.
               Praesentium hic rem eveniet error possimus, neque ex doloribus.
             </div>
-            <div className="genre">Action</div>
+            <div className={listitem.genre}>Action</div>
           </div>
         </>
       )}
