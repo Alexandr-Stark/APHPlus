@@ -1,0 +1,129 @@
+:root {
+  --label-color: #8c8c8c;
+  --input-color: #323232;
+  --main-text-color: #fefefe;
+  --btn-color: #e20813;
+  --btn-hover-color: #f40612;
+}
+html {
+  background-image: url(https://miro.medium.com/max/1400/1*5lyavS59mazOFnb55Z6znQ.png);
+  padding: 0;
+}
+.wrapper {
+  max-width: 400px;
+  width: 100%;
+  margin: 20px auto;
+  padding: 30px 68px 90px 68px;
+  background-color: rgba(0, 0, 0, 0.86);
+}
+.flexTitle {
+  display: flex;
+  justify-content: space-between;
+  h1 {
+    width: 80%;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+}
+.homeIcon {
+  margin-top: 23px;
+}
+.form {
+  width: 100%;
+}
+.inputs {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+.label {
+  width: 200px;
+  margin-right: 10px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--main-text-color);
+}
+.input {
+  width: 220px;
+  outline: none;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 15px 10px;
+  border-radius: 3px;
+  border: none;
+  color: var(--label-color);
+  background-color: var(--input-color);
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  &::placeholder {
+    color: var(--label-color);
+    font-size: 12px;
+  }
+}
+.flex {
+  display: flex;
+  flex-direction: row;
+}
+.password {
+  padding: 8px;
+  margin-left: -32px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+.btn {
+  width: 250px;
+  padding: 16px;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  border: 0px;
+  margin: 24px 0 5px;
+  cursor: pointer;
+  border-radius: 3px;
+  outline: none;
+  background: var(--btn-color);
+  color: var(--main-text-color);
+  &:hover {
+    cursor: pointer;
+    background: var(--btn-hover-color);
+    transition: all 0.4s ease-out;
+  }
+}
+.flexBtn {
+  display: flex;
+  justify-content: end;
+  flex-direction: column;
+}
+.login {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  margin-top: 10px;
+  color: var(--main-text-color);
+  width: 80%;
+  a {
+    text-decoration: none;
+    color: #054bc7;
+    font-weight: 600;
+  }
+}
+@media (max-width: 420px) {
+  .inputs {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .label {
+    margin-bottom: 5px;
+  }
+  .btn {
+    width: 240px;
+  }
+}
