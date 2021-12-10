@@ -14,19 +14,21 @@ const Login = () => {
         </div>
       </div>
       <div className="container">
-        <form>
-          <h1>Sign In</h1>
-          <input type="email" placeholder="Email or phone number" />
-          <input type="password" placeholder="Password" />
-          <button className="loginButton">Sign In</button>
-          <span>
-            New to APH+? <a>Sign up now.</a>
-          </span>
-          <small>
-            This page is protected by Google reCAPTCHA to ensure you`re not a
-            bot. <a>Learn more</a>.
-          </small>
-        </form>
+        <div>
+          <form>
+            <h1>Sign In</h1>
+            <input type="email" placeholder="Email or phone number" />
+            <input type="password" placeholder="Password" />
+            <button className="loginButton">Sign In</button>
+            <span>
+              New to APH+? <a>Sign up now.</a>
+            </span>
+            <small>
+              This page is protected by Google reCAPTCHA to ensure you`re not a
+              bot. <a>Learn more</a>.
+            </small>
+          </form>
+        </div>
       </div>
     </div>
   );
