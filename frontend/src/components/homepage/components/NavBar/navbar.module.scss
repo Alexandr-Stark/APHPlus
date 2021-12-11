@@ -26,7 +26,11 @@
           height: 25px;
           margin-right: 20px;
         }
-  
+        .menu{
+          .menuTrigger{
+            display: none;
+          }
+        }
         span {
           margin-right: 15px;
           cursor: pointer;
@@ -74,3 +78,36 @@
     }
   }
   
+  @media (max-width: 850px){
+    .navbar{
+      .container{
+        .left{
+          .menu{
+            .menuTrigger{
+              display: flex;
+              align-items: center;
+              span{
+                margin:0;
+              }
+            }
+            .menuLinks{
+              display: none;
+            }
+            &:hover{
+              .menuLinks{
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                background-color: black;
+                padding: 10px;
+                border-radius: 7px;
+                span{
+                  padding: 2px 0px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
