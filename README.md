@@ -10,7 +10,6 @@ This is the repository responsible for APH+ app.
 
 - NodeJS (14.x.x);
 - NPM (6.x.x);
-- run **`npx simple-git-hooks`** at the root of the project, before the start (it will set the pre-commit hook for any commits).
 
 ## ⚙️ Environment
 
