@@ -7,11 +7,20 @@
     "npm": ">=6 <7"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/server.js",
+    "start:dev": "nodemon ./src/server.js",
     "lint:js": "npx eslint \"src/**/*.{js,jsx}\" --resolve-plugins-relative-to .",
     "lint": "npm run lint:js"
   },
   "dependencies": {
-    "express": "4.17.1"
+    "bcryptjs": "2.4.3",
+    "dotenv": "10.0.0",
+    "express": "4.17.1",
+    "express-validator": "6.13.0",
+    "jsonwebtoken": "8.5.1",
+    "mongoose": "6.0.15"
+  },
+  "devDependencies": {
+    "nodemon": "2.0.15"
   }
 }
