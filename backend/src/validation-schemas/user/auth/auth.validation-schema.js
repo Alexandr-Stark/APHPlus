@@ -1,5 +1,5 @@
 const { body, validationResult } = require('express-validator');
-const { PASSWORD, EMAIL, PHONE}  = require('../../constants');
+const { PASSWORD, EMAIL, PHONE}  = require('../../../common/user/constants');
 
 const singUpValidator = {
  password: (value, { req }) => {
@@ -46,7 +46,7 @@ const singUpValidator = {
       throw new Error(`empty phone field`);
     }
     if (!PHONE.test(value)) {
-      throw new Error(`no correct phone number`);
+      throw new Error(`uncorrect phone number`);
     }
     return true;
   }, 
