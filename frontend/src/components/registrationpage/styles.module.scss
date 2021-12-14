@@ -26,9 +26,6 @@
   border-radius: 5px;
 }
 
-// .registrationForm {
-// }
-
 .registrationHeader {
   display: flex;
   justify-content: space-between;
@@ -54,9 +51,6 @@
   }
 }
 
-// .registrationContent {
-// }
-
 .sectionField {
   display: flex;
   justify-content: space-between;
@@ -74,8 +68,6 @@
     max-width: 300px;
     background: #333;
     padding: 16px;
-    width: 100%;
-    max-width: 300px;
     height: 50px;
     border-radius: 4px;
     color: white;
@@ -148,5 +140,33 @@
   }
   &:active {
     background: darken(#e50914, 5%);
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .wrapper {
+    background: rgb(0, 0, 0);
+  }
+  .sectionRegistration {
+    padding: 40px 48px 20px;
+  }
+  .sectionFieldPass {
+    max-width: 100%;
+  }
+  .sectionField {
+    flex-direction: column;
+    margin: 15px 0;
+    > label {
+      align-self: flex-start;
+    }
+    > input {
+      max-width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .sectionRegistration {
+    padding: 25px 33px 5px;
   }
 }
