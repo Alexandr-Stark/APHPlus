@@ -20,7 +20,7 @@ export function useRoutes(isAuthenticated) {
 
   return (
     <Switch>
-      <Route path="/" element={<div>Blyat` sho za huinya</div>} exact />
+      <Route path="/" element={<div>Home</div>} exact />
       <Route path="/sign-up" element={<Regpage />} exact />
       <Route index path="/sign-in" element={<Loginpage />} exact />
     </Switch>

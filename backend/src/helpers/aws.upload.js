@@ -1,0 +1,21 @@
+const fs = require('fs');
+require('dotenv').config;
+const s3 = require('../configuration/awsConfig');
+
+async function uploadFile(filePath) {
+
+    const fileContent = await fs.readFileSync(filePath);
+
+    const params = {
+        Bucket: process.env.DO_SPACES_NAME,
+        Key: filePath.slice(filePath.lastIndexOf('/') + 1), // File name you want to save as in S3
+        Body: fileContent
+    };
+    
+    await s3.upload(params, function(err, data) {
+        if (err) throw err;
+        console.log(`File uploaded successfully. *****${data}***** ${data.Location}`);
+    });
+}
+
+module.exports = uploadFile;
