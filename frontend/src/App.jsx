@@ -9,13 +9,13 @@ import { AuthContext } from './context/AuthContext';
 import { useAuth } from './hooks/auth.hook';
 
 function App() {
-  const {token, login, logout, userId} = useAuth();
+  const {token, login, logout, userId, ready} = useAuth();
   // eslint-disable-next-line no-console
   const isAuthenticated = !!token;
   const routes = useRoutes(isAuthenticated);
   return (
     <AuthContext.Provider value={{
-      token, login, logout, userId, isAuthenticated
+      token, login, logout, userId, ready, isAuthenticated
     }}>
       <Router>
         <div className="App">

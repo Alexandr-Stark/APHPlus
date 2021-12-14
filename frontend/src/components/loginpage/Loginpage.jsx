@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { React, useState, useContext } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import { useHttp } from '../../hooks/http.hook';
 
@@ -9,6 +10,7 @@ function Loginpage() {
   const auth = useContext(AuthContext);
   const [form, setForm] = useState({ email: '', password: '' });
   const { loading, request } = useHttp();
+  const navigate = useNavigate();
 
   const [visiblePass, setVisiblePass] = useState(false);
 
@@ -24,6 +26,7 @@ function Loginpage() {
     try {
       const response = await request('api/auth/sign-in', 'POST', { ...form });
       auth.login(response.token, response.userId);
+      if(auth.ready) navigate('/browse');
       // eslint-disable-next-line no-empty
     } catch (e) {}
   }
@@ -35,7 +38,7 @@ function Loginpage() {
           <img
             className={styles.logo}
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
-            alt=""
+            alt="Something went wrong..."
           />
         </div>
       </div>
@@ -45,30 +48,32 @@ function Loginpage() {
           <input
             type="text"
             name="email"
-            onChange={changeHandler}
+            value={form.email}
             placeholder="Email"
+            onChange={changeHandler}
           />
           <div className={styles.sectionFieldPass}>
             <input
-              name="password"
-              onChange={changeHandler}
               type={visiblePass ? 'text' : 'password'}
+              name="password"
+              value={form.password}
               placeholder="Password"
               autoComplete="off"
+              onChange={changeHandler}
             />
             <p id="password" onClick={tooglePasswordVisible}>
               {visiblePass ? 'Hide' : 'Show'}
             </p>
           </div>
-          <button onClick={serverAction} className={styles.loginButton}>
+          <button disabled={loading} className={styles.loginButton} onClick={serverAction}>
             Sign In
           </button>
           <span>
-            New to APH+? <a>Sign up now.</a>
+            New to APH+? <Link to="/sign-up">Sign up now.</Link>
           </span>
           <small>
             This page is protected by Google reCAPTCHA to ensure you`re not a
-            bot. <a>Learn more</a>.
+            bot. <a href="https://policies.google.com/terms" target="_blank" rel="noreferrer">Learn more</a>.
           </small>
         </div>
       </div>

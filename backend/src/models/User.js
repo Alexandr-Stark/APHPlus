@@ -19,7 +19,7 @@ const schema = new Schema({
       },
     },
   ],
-  createdAt: { type: Date, default: new Date() },
+  createdAt: { type: Date, default: Date.now },
   modifiedAt: { type: Date, default: null },
 });
 
