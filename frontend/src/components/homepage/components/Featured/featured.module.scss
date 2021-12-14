@@ -10,6 +10,7 @@
     font-size: 30px;
     font-weight: 500;
     color: white;
+    z-index: 199;
     display: flex;
     align-items: center;
 
@@ -65,8 +66,11 @@
         }
 
         &.more {
-          background-color: gray;
+          background-color: rgb(109, 109, 110);
           color: white;
+          &:hover{
+            background-color: rgba(109, 109, 110, 0.6);
+          }
         }
 
         span {
@@ -79,12 +83,34 @@
   
 @media (max-width: 768px){
   .featured{
+    .category{
+      top: 65px;
+    }
     .info{
       .desc{
-        font-size: 1.4vw;
+        font-size: 1.6vw;
         width: 100%;
       }
     }
   }
 
+}
+
+@media (max-width:540px){
+  .featured{
+    .category{
+      top: 58px;
+      left: 20px;
+      font-size: 20px;
+      select{
+        font-size: 10px;
+      }
+    }
+    .info{
+      .desc{
+        margin: 10px 0px;
+        font-size: 8px;
+      }
+    }
+  }
 }

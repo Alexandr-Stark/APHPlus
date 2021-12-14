@@ -1,11 +1,11 @@
 import { InfoOutlined, PlayArrow } from "@material-ui/icons";
-import "./featured.scss";
+import styles from "./featured.module.scss";
 
 export default function Featured({ type }) {
   return (
-    <div className="featured">
+    <div className={styles.featured}>
       {type && (
-        <div className="category">
+        <div className={styles.category}>
           <span>{type === "movie" ? "Movies" : "Series"}</span>
           <select name="genre" id="genre">
             <option>Genre</option>
@@ -29,23 +29,22 @@ export default function Featured({ type }) {
         src="https://images.pexels.com/photos/6899260/pexels-photo-6899260.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
         alt=""
       />
-      <div className="info">
+      <div className={styles.info}>
         <img
           src="https://occ-0-1432-1433.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABUZdeG1DrMstq-YKHZ-dA-cx2uQN_YbCYx7RABDk0y7F8ZK6nzgCz4bp5qJVgMizPbVpIvXrd4xMBQAuNe0xmuW2WjoeGMDn1cFO.webp?r=df1"
           alt=""
         />
-        <span className="desc">
+        <span className={styles.desc}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae
           adipisci repellendus eum quasi illo, velit numquam, maxime tempora
-          sint deleniti, aliquid qui? Facilis, adipisci! Ratione hic repudiandae
-          temporibus eum earum?
+          sint deleniti, aliquid qui?
         </span>
-        <div className="buttons">
-          <button className="play">
+        <div className={styles.buttons}>
+          <button className={styles.play}>
             <PlayArrow />
             <span>Play</span>
           </button>
-          <button className="more">
+          <button className={styles.more}>
             <InfoOutlined />
             <span>Info</span>
           </button>
