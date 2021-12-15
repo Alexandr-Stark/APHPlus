@@ -8,7 +8,7 @@ const uploadFile = require('./helpers/aws.upload');
 
 const app = express();
 
-//uploadFile("D:/Photo/SPNWH.jpg");
+//uploadFile("D:/Photo/spiderman_nwh_poster.jpeg");
 
 app.use(express.json({extended: true}));
 

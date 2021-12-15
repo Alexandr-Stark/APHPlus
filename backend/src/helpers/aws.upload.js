@@ -9,7 +9,8 @@ async function uploadFile(filePath) {
     const params = {
         Bucket: process.env.DO_SPACES_BUCKET,
         Key: filePath.slice(filePath.lastIndexOf('/') + 1),
-        Body: fileContent
+        Body: fileContent,
+        ACL: "public-read"
     };
     
     s3.upload(params, function(err, data) {
