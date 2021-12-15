@@ -2,6 +2,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes as Switch, Route} from 'react-router-dom';
 import Loginpage from './components/loginpage/Loginpage';
+import "./app.scss";
 import Regpage from './components/registrationpage/RegistrationPage';
 
 import { useRoutes } from './components/routes/useRoutes';
@@ -11,7 +12,7 @@ import { useAuth } from './hooks/auth.hook';
 function App() {
   const {token, login, logout, userId} = useAuth();
   // eslint-disable-next-line no-console
-  const isAuthenticated = !!token;
+  const isAuthenticated = true;//!!token;
   const routes = useRoutes(isAuthenticated);
   return (
     <AuthContext.Provider value={{
