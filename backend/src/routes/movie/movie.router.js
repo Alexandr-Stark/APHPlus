@@ -5,7 +5,7 @@ const Movie = require('../../models/Movie');
 
 const movieRouter = Router();
 
-movieRouter.get('/', async(request, response) => {
+movieRouter.get('/', auth, async(request, response) => {
     try {
         const movies = await Movie.find({});
         response.status(200).json(movies);
@@ -18,7 +18,7 @@ movieRouter.get('/', async(request, response) => {
     }
 });
 
-movieRouter.get('/:id', async(request, response) => {
+movieRouter.get('/:id', auth, async(request, response) => {
     try {
         const movies = await Movie.findById(request.params.id);
         response.status(200).json(movies);
