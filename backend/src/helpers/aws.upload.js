@@ -7,7 +7,7 @@ async function uploadFile(filePath) {
     const fileContent = await fs.readFileSync(filePath);
 
     const params = {
-        Bucket: process.env.DO_SPACES_NAME,
+        Bucket: process.env.DO_SPACES_BUCKET,
         Key: filePath.slice(filePath.lastIndexOf('/') + 1),
         Body: fileContent
     };
