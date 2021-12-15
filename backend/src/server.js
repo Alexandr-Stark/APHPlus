@@ -3,9 +3,13 @@ require('dotenv').config();
 const dbConnection = require('./configuration/mongoConfig.js');
 const authRouter = require('./routes/auth/auth.router');
 
+const uploadFile = require('./helpers/aws.upload');
+
 const app = express();
 
 // require('./configuration/awsConfig.js');
+
+uploadFile("D:/Photo/SPNWH.jpg");
 
 app.use(express.json({extended: true}));
 app.use('/api/auth', authRouter);
