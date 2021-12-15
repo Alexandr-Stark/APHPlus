@@ -1,9 +1,11 @@
+/* eslint-disable no-unused-vars */
 import listitem from "./listitem.module.scss";
 import {
   PlayArrow,
   Add,
   ThumbUpAltOutlined,
   ThumbDownOutlined,
+  ArrowDropDown
 } from "@material-ui/icons";
 import { useState } from "react";
 
@@ -31,6 +33,7 @@ export default function ListItem({ index }) {
               <Add className={listitem.icon}/>
               <ThumbUpAltOutlined className={listitem.icon} />
               <ThumbDownOutlined className={listitem.icon} />
+              <ArrowDropDown className={listitem.openIcon}/>
             </div>
             <div className={listitem.itemInfoTop}>
               <span>1 hour 14 mins</span>

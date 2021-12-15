@@ -1,7 +1,7 @@
 .listItem {
     width: 225px;
     height: 120px;
-    background-color: #0b0b0b;
+    background-color: var(--main-color);
     margin-right: 5px;
     overflow: hidden;
     cursor: pointer;
@@ -47,19 +47,8 @@
           .icon {
             border: 2px solid white;
             padding: 5px;
-            width: 30px;
-            height: 30px;
             border-radius: 50%;
             margin-right: 10px;
-            font-size: 16px;
-          }
-          .openIcon {
-            border: 2px solid white;
-            padding: 5px;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            margin-left: 80px;
             font-size: 16px;
           }
         }
