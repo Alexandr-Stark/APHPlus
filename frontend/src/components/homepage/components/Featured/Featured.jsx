@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { InfoOutlined, PlayArrow } from "@material-ui/icons";
 import styles from "./featured.module.scss";
 
