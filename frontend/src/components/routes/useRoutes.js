@@ -16,7 +16,7 @@ export function useRoutes(isAuthenticated) {
         <Route path="/movie" element={<Home type={"movie"}/>} exact />
         <Route path="/serial" element={<Home type={"serials"}/>} exact />
         <Route path="/my-list" element={<div>My list</div>} exact />
-        <Route path="/continue-watching" element={<div>Continue watching</div>} exact />
+        <Route path="/continue-watching" element={<Video />} exact />
       </Switch>
     );
   }

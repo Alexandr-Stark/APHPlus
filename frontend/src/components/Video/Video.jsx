@@ -8,6 +8,9 @@ function Video() {
     //change later to server quary for stop watching time
     console.log(document.getElementById("#player").currentTime);
   }
+    const pause = ()=>{
+      console.log(document.getElementById("#player").currentTime);
+    }
   return (
     <div className={styles.watch}>
       <div className={styles.back} onClick={goBack}>
@@ -21,6 +24,7 @@ function Video() {
         id="#player"
         src="//storage.googleapis.com/media-session/caminandes/short.mp4#t=60.335772"
         controls
+        onPause={pause}
         controlsList="nodownload"
         />
     </div>
