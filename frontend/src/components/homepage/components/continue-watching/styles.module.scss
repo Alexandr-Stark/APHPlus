@@ -1,0 +1,21 @@
+.container{
+    background-color: #0b0b0b;
+    overflow: auto;
+    height: 100vh;
+    h2{
+        color: white;
+        margin-top: 100px;
+        margin-left: 50px;
+        font-size: 2.5rem;
+    }
+}
+.wrapper{
+    padding-top: 100px;
+    padding-left: 50px;
+    padding-right: 30px;
+    padding-bottom: 150px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-gap: 15px;
+
+}

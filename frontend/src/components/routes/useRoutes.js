@@ -2,6 +2,7 @@ import {
   Routes as Switch,
   Route,
 } from 'react-router-dom';
+import ContinueWatching from '../homepage/components/continue-watching/ContinueWatching';
 import Home from '../homepage/Homepage';
 import Loginpage from '../loginpage/Loginpage';
 import Regpage from '../registrationpage/RegistrationPage';
@@ -14,7 +15,7 @@ export function useRoutes(isAuthenticated) {
         <Route path="/movie" element={<Home type={"movie"}/>} exact />
         <Route path="/serial" element={<Home type={"serials"}/>} exact />
         <Route path="/my-list" element={<div>My list</div>} exact />
-        <Route path="/continue-watching" element={<div>Continue watching</div>} exact />
+        <Route path="/continue-watching" element={<ContinueWatching />} exact />
       </Switch>
     );
   }
