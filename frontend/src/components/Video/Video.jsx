@@ -1,18 +1,29 @@
+/* eslint no-console: "off" */
 import { ArrowBackOutlined } from "@material-ui/icons";
 import styles from "./styles.module.scss";
+import {Link} from "react-router-dom";
 
-export default function Video() {
+function Video() {
+  const goBack = ()=>{
+    //change later to server quary for stop watching time
+    console.log(document.getElementById("#player").currentTime);
+  }
   return (
     <div className={styles.watch}>
-      <div className={styles.back}>
+      <div className={styles.back} onClick={goBack}>
+        <Link to={"/browse"}>
         <ArrowBackOutlined />
         Home
+        </Link>
       </div>
       <video
         className={styles.video}
-        src="https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c0fd273d2c6d9a064f3ae35579b2bbdf&profile_id=139&oauth2_token_id=57447761"
+        id="#player"
+        src="//storage.googleapis.com/media-session/caminandes/short.mp4#t=60.335772"
         controls
+        controlsList="nodownload"
         />
     </div>
   );
 }
+export default Video;

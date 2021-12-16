@@ -6,8 +6,10 @@
     align-items: center;
   
     .back {
+      a{
       display: flex;
       align-items: center;
+      }
       position: absolute;
       top: 10px;
       left: 10px;

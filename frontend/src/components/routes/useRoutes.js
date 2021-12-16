@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import {
   Routes as Switch,
   Route,
@@ -5,6 +6,7 @@ import {
 import Home from '../homepage/Homepage';
 import Loginpage from '../loginpage/Loginpage';
 import Regpage from '../registrationpage/RegistrationPage';
+import Video from '../Video/Video';
 
 export function useRoutes(isAuthenticated) {
   if (isAuthenticated) {
