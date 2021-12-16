@@ -1,4 +1,3 @@
-
 import Navbar from "../NavBar/NavBar";
 import Item from "./components/Item";
 import styles from  './styles.module.scss';
