@@ -5,6 +5,7 @@ import {
   import { useRef, useState } from "react";
   import ListItem from "../ListItem/ListItem";
   import list from "./list.module.scss";
+  import { Link } from 'react-router-dom';
   
   export default function List() {
     const [isMoved, setIsMoved] = useState(false);
@@ -29,7 +30,7 @@ import {
     };
     return (
       <div className={list.list}>
-        <span className={list.listTitle}>Continue to watch</span>
+        <span className={list.listTitle}>Continue to watch</span><Link to="/continue-watching" className={list.link}>watch all</Link>
         <div className={list.wrapper}>
           <ArrowBackIosOutlined
             className={`${list.sliderArrow} ${list.left}`}

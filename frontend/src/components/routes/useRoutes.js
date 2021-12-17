@@ -9,6 +9,7 @@ import Loginpage from '../loginpage/Loginpage';
 import Regpage from '../registrationpage/RegistrationPage';
 import Video from '../Video/Video';
 import Start from '../startpage/Startpage';
+import Description from "../homepage/components/ListItemDescription/Description"
 
 export function useRoutes(isAuthenticated) {
   if (isAuthenticated) {
@@ -17,8 +18,10 @@ export function useRoutes(isAuthenticated) {
         <Route path="/browse" element={<Home />} exact />
         <Route path="/movie" element={<Home type={"movie"}/>} exact />
         <Route path="/serial" element={<Home type={"serials"}/>} exact />
-        <Route path="/my-list" element={<div>My list</div>} exact />
-        <Route path="/continue-watching" element={<ContinueWatching />} exact />
+        <Route path="/my-list" element={<ContinueWatching title="My List"/>} exact />
+        <Route path="/continue-watching" element={<ContinueWatching title="Continue watching"/>} exact />
+        <Route path="/watch" element={<Video />} exact />
+        <Route path="/description" element={<Description type={"serial"}/>} exact />
       </Switch>
     );
   }

@@ -8,6 +8,7 @@ import {
   ArrowDropDown
 } from "@material-ui/icons";
 import { useState } from "react";
+import { Link } from 'react-router-dom';
 
 export default function ListItem({ index }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -29,11 +30,15 @@ export default function ListItem({ index }) {
           <video src={trailer} autoPlay={true} loop />
           <div className={listitem.itemInfo}>
             <div className={listitem.icons}>
-              <PlayArrow className={listitem.icon}/>
+              <Link to="/watch">
+                <PlayArrow className={listitem.icon}/>
+              </Link>
               <Add className={listitem.icon}/>
               <ThumbUpAltOutlined className={listitem.icon} />
               <ThumbDownOutlined className={listitem.icon} />
-              <ArrowDropDown className={listitem.openIcon}/>
+              <Link to="/description">
+                <ArrowDropDown className={listitem.openIcon}/>
+              </Link>
             </div>
             <div className={listitem.itemInfoTop}>
               <span>1 hour 14 mins</span>

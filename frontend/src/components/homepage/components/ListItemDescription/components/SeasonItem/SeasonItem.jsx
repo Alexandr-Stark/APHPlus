@@ -3,6 +3,7 @@ import {
   PlayArrow
 } from "@material-ui/icons";
 import { useState } from "react";
+import { Link } from 'react-router-dom';
 
 export default function SeasonItem({ index }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -21,7 +22,9 @@ export default function SeasonItem({ index }) {
         <>
           <div className={styles.itemInfo}>
             <div className={styles.icons}>
+              <Link to="/watch">
               <PlayArrow className={styles.icon}/>
+              </Link>
             </div>
             <div className={styles.itemInfoTop}>
               <span>1 hour 14 mins</span>

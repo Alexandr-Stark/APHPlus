@@ -2,6 +2,7 @@
 import { React, useState, useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import { useHttp } from '../../hooks/http.hook';
+import { Link } from 'react-router-dom';
 
 import styles from './styles.module.scss';
 
@@ -32,11 +33,13 @@ function Loginpage() {
     <div className={styles.login}>
       <div className={styles.top}>
         <div className={styles.wrapper}>
+          <Link to="/">
           <img
             className={styles.logo}
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
             alt=""
           />
+          </Link>
         </div>
       </div>
       <div className={styles.container}>
@@ -64,7 +67,7 @@ function Loginpage() {
             Sign In
           </button>
           <span>
-            New to APH+? <a>Sign up now.</a>
+            New to APH+? <Link to="/sign-up">Sign up now.</Link>
           </span>
           <small>
             This page is protected by Google reCAPTCHA to ensure you`re not a

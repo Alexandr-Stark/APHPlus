@@ -2,11 +2,11 @@ import Navbar from "../NavBar/NavBar";
 import Item from "./components/Item";
 import styles from  './styles.module.scss';
 
-function ContinueWatching() {
+function ContinueWatching({title}) {
   return (
     <div className={styles.container}>
       <Navbar />
-      <h2>Continue watching</h2>
+      <h2>{title}</h2>
       <div className={styles.wrapper}>
         <Item index={0}/>
         <Item index={1}/>

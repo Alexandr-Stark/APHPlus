@@ -8,7 +8,15 @@
       font-weight: 500;
       margin-left: 50px;
     }
-  
+    .link{
+      color: grey;
+      font-size: 14px;
+      margin-left: 15px;
+      &:hover{
+        cursor: pointer;
+        color: white;
+      }
+    }
     .wrapper {
       position: relative;
       .sliderArrow {

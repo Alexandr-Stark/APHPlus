@@ -12,7 +12,7 @@ import { useAuth } from './hooks/auth.hook';
 function App() {
   const {token, login, logout, userId} = useAuth();
   // eslint-disable-next-line no-console
-  const isAuthenticated = false;//!!token;
+  const isAuthenticated = true;//!!token;
   const routes = useRoutes(isAuthenticated);
   return (
     <AuthContext.Provider value={{

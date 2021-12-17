@@ -1,5 +1,6 @@
 import { InfoOutlined, PlayArrow } from "@material-ui/icons";
 import styles from "./featured.module.scss";
+import { Link } from 'react-router-dom';
 
 export default function Featured({ type }) {
   return (
@@ -40,14 +41,14 @@ export default function Featured({ type }) {
           sint deleniti, aliquid qui?
         </span>
         <div className={styles.buttons}>
-          <button className={styles.play}>
-            <PlayArrow />
-            <span>Play</span>
-          </button>
-          <button className={styles.more}>
+            <Link to="/watch" className={styles.play}>
+              <PlayArrow />
+              <span>Play</span>
+            </Link>
+          <Link to="/description" className={styles.more}>
             <InfoOutlined />
             <span>Info</span>
-          </button>
+            </Link>
         </div>
       </div>
     </div>

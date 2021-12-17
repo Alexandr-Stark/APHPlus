@@ -4,8 +4,9 @@ import { ArrowBackOutlined,
     Add,
     ThumbUpAltOutlined,
     ThumbDownOutlined, } from "@material-ui/icons";
-import styles from "./style.module.scss";
+import styles from "./styles.module.scss";
 import Season from "./components/Season/Season";
+import { Link } from 'react-router-dom';
 
 export default function Description({ index, type }) {
     const trailer =
@@ -13,14 +14,18 @@ export default function Description({ index, type }) {
     const isSerial = type==="serial";
     return (
     <div className={styles.desc}>
+      <Link to="/browse">
       <ArrowBackOutlined className={styles.backicon}/>
+      </Link>
       <div className={styles.videoWrapper}>
         <video src={trailer} autoPlay={true} loop className={styles.player} />
         <div className={styles.icons}>
-            <PlayArrow className={styles.icon}/>
-            <Add className={styles.icon}/>
-            <ThumbUpAltOutlined className={styles.icon} />
-            <ThumbDownOutlined className={styles.icon} />
+          <Link to="/watch">
+          <PlayArrow className={styles.icon}/>
+          </Link>
+          <Add className={styles.icon}/>
+          <ThumbUpAltOutlined className={styles.icon} />
+          <ThumbDownOutlined className={styles.icon} />
         </div>
       </div>
       <div className={styles.content}>
