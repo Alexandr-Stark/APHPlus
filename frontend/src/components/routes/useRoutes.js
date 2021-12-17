@@ -7,6 +7,7 @@ import Home from '../homepage/Homepage';
 import Loginpage from '../loginpage/Loginpage';
 import Regpage from '../registrationpage/RegistrationPage';
 import Video from '../Video/Video';
+import Start from '../startpage/Startpage';
 
 export function useRoutes(isAuthenticated) {
   if (isAuthenticated) {
@@ -23,7 +24,7 @@ export function useRoutes(isAuthenticated) {
 
   return (
     <Switch>
-      <Route path="/" element={<div>Blyat` sho za huinya</div>} exact />
+      <Route exact path="/" element={<Start />} />
       <Route path="/sign-up" element={<Regpage />} exact />
       <Route index path="/sign-in" element={<Loginpage />} exact />
     </Switch>
