@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes as Switch, Route} from 'react-router-do
 import Loginpage from './components/loginpage/Loginpage';
 import "./app.scss";
 import Regpage from './components/registrationpage/RegistrationPage';
+import ScrollToTop from "./components/routes/ScrollToTop";
 
 import { useRoutes } from './components/routes/useRoutes';
 import { AuthContext } from './context/AuthContext';
@@ -19,6 +20,7 @@ function App() {
       token, login, logout, userId, isAuthenticated
     }}>
       <Router>
+        <ScrollToTop />
         <div className="App">
           {routes} 
         </div>
