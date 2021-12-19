@@ -2,7 +2,7 @@ const { Schema, model, Types } = require('mongoose');
 
 const schema = new Schema({
     title: String,
-    poster: Object,
+    poster: String,
     type: String, // Serial || Film
     genres: [{type: Types.ObjectId, ref: 'Genres'}],
     cast: [{
@@ -10,27 +10,27 @@ const schema = new Schema({
         asCharacter: String
     }],
     movieDescription: String,
-    ageRating: String,
-    apiIMDbId: String, 
+    ageRating: Number,
+    apiIMDbId: Number, 
     releaseDate: Date,
     trailers: [{
-        trailerId: Types.ObjectId,
+        trailerId: String,
         title: String,
-        trailer: Object
+        trailer: String
     }],
     film: String,
     seasons: [{ // null for type: Film
-        seasonId: Types.ObjectId,
+        seasonId: String,
         seasonNumber: Number,
         episodes: [{
-            episodeId: Types.ObjectId, // Serials id
+            episodeId: String, // Serials id
             episodeNumber: Number,
             title: String,
-            poster: Object, 
+            poster: String, 
             episodeDescription: String,
             ageRating: String,
             releaseDate: Date,
-            episode: Object
+            episode: String
         }],
     }],
 });

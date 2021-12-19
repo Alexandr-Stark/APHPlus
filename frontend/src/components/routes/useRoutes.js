@@ -2,9 +2,9 @@ import {
   Routes as Switch,
   Route, Navigate
 } from 'react-router-dom';
-import Homepage from '../homepage/Homepage';
-import Loginpage from '../loginpage/Loginpage';
-import Regpage from '../registrationpage/RegistrationPage';
+import Homepage from '../home-page/HomePage';
+import Loginpage from '../login-page/LoginPage';
+import Regpage from '../registration-page/RegistrationPage';
 
 export function useRoutes(isAuthenticated) {
   if (isAuthenticated) {

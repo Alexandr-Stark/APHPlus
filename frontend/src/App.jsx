@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { BrowserRouter as Router, Routes as Switch, Route} from 'react-router-dom';
-import Loginpage from './components/loginpage/Loginpage';
-import Regpage from './components/registrationpage/RegistrationPage';
+import Loginpage from './components/login-page/LoginPage';
+import Regpage from './components/registration-page/RegistrationPage';
 
 import { useRoutes } from './components/routes/useRoutes';
 import { AuthContext } from './context/AuthContext';
