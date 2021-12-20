@@ -1,0 +1,26 @@
+[
+    {
+      "id": 1,
+      "title": "Enjoy on your TV.",
+      "subTitle": "Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more.",
+      "image": "https://cdn1.bbcode0.com/uploads/2021/12/15/769ded84f9d88911d9ab4d2592547010-full.png",
+      "alt": "Tiger King on Netflix",
+      "direction": "row"
+    },
+    {
+      "id": 2,
+      "title": "Download your programmes to watch on the go.",
+      "subTitle": "Save your data and watch all your favourites offline.",
+      "image": "https://cdn1.bbcode0.com/uploads/2021/12/15/d266cff7a75207a15cdad4c64b8d0ad5-full.png",
+      "alt": "Watch on mobile",
+      "direction": "row-reverse"
+    },
+    {
+      "id": 3,
+      "title": "Watch everywhere.",
+      "subTitle": "Stream unlimited films and TV programmes on your phone, tablet, laptop and TV without paying more.",
+      "image": "https://cdn1.bbcode0.com/uploads/2021/12/15/6480eabd0c4865f1dac9b6361ad180e8-full.png",
+      "alt": "Money Heist on Netflix",
+      "direction": "row"
+    }
+  ]

@@ -45,7 +45,7 @@ function Regpage() {
           <div className={styles.registrationForm}>
             <header className={styles.registrationHeader}>
               <p className={styles.registrationTitle}>Registration</p>
-              <a className={styles.registrationHomeBtn} href="#">
+              <a className={styles.registrationHomeBtn} href="/">
                 <img src={homeImg} alt="Home" />
               </a>
             </header>
