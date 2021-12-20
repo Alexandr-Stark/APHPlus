@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import styles from "./styles.module.scss";
 import {
   PlayArrow
@@ -10,7 +11,6 @@ export default function SeasonItem({ index }) {
   return (
     <div
       className={styles.listItem}
-      style={{ left: isHovered && index * 225  + index * 2.5 }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -18,8 +18,12 @@ export default function SeasonItem({ index }) {
         src="https://occ-0-1723-92.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABU7D36jL6KiLG1xI8Xg_cZK-hYQj1L8yRxbQuB0rcLCnAk8AhEK5EM83QI71bRHUm0qOYxonD88gaThgDaPu7NuUfRg.jpg?r=4ee"
         alt=""
       />
-      {isHovered && (
-        <>
+     {isHovered && (
+          <div className={styles.hovered}>
+            <img className={styles.img}
+              src="https://occ-0-1723-92.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABU7D36jL6KiLG1xI8Xg_cZK-hYQj1L8yRxbQuB0rcLCnAk8AhEK5EM83QI71bRHUm0qOYxonD88gaThgDaPu7NuUfRg.jpg?r=4ee"
+              alt=""
+            />
           <div className={styles.itemInfo}>
             <div className={styles.icons}>
               <Link to="/watch">
@@ -36,7 +40,7 @@ export default function SeasonItem({ index }) {
               Praesentium hic rem eveniet error possimus, neque ex doloribus.
             </div>
           </div>
-        </>
+        </div>
       )}
     </div>
   );

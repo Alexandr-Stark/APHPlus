@@ -17,7 +17,6 @@ export default function ListItem({ index }) {
   return (
     <div
       className={listitem.listItem}
-      style={{ left: isHovered && index * 225  + index * 2.5 }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -26,9 +25,13 @@ export default function ListItem({ index }) {
         alt=""
       />
       {isHovered && (
-        <>
-          <video src={trailer} autoPlay={true} loop />
-          <div className={listitem.itemInfo}>
+          <div className={listitem.hovered}>
+            <img className={listitem.img}
+              src="https://occ-0-1723-92.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABU7D36jL6KiLG1xI8Xg_cZK-hYQj1L8yRxbQuB0rcLCnAk8AhEK5EM83QI71bRHUm0qOYxonD88gaThgDaPu7NuUfRg.jpg?r=4ee"
+              alt=""
+            />
+            <video src={trailer} autoPlay={true} loop />
+            <div className={listitem.itemInfo}>
             <div className={listitem.icons}>
               <Link to="/watch">
                 <PlayArrow className={listitem.icon}/>
@@ -51,7 +54,7 @@ export default function ListItem({ index }) {
             </div>
             <div className={listitem.genre}>Action</div>
           </div>
-        </>
+        </div>
       )}
     </div>
   );
