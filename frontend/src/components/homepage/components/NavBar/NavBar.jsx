@@ -3,8 +3,9 @@ import { useState } from "react";
 import navbar from "./navbar.module.scss";
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({searchTerm, setSearchTerm}) => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [searchActive, setSearchActive] = useState(false);
 
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
@@ -41,7 +42,11 @@ const Navbar = () => {
           </div>
         </div>
         <div className={navbar.right}>
-          <Search className={navbar.icon} />
+          <div className={navbar.search}>
+            <Search className={navbar.icon} onClick={() => setSearchActive((searchActive) => !searchActive)}/>
+            <input type="text" className={searchActive ? navbar.searchInput: navbar.searchInputHidden} value={searchTerm}
+        onChange={({ target }) => setSearchTerm(target.value)} placeholder="Search films and series"/>
+          </div>
           <span>Kids</span>
           <Notifications className={navbar.icon} />
           <img

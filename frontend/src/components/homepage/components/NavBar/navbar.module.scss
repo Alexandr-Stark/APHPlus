@@ -30,6 +30,9 @@
           .menuTrigger{
             display: none;
           }
+          .menuLinks{
+            display: flex;
+          }
         }
         span {
           margin-right: 15px;
@@ -40,12 +43,40 @@
       .right {
         display: flex;
         align-items: center;
-  
-        .icon {
-          margin: 0px 15px;
-          cursor: pointer;
+        .search{
+          display: flex;
+          align-items: center;
+          @media (max-width: 700px) {
+            display: none;
+          }
+          .icon {
+            margin: 0px 10px;
+            cursor: pointer;
+          }
+          .searchInput{
+            display: block;
+            background-color: rgba(64, 64, 64, 0.5);
+            color: white;
+            border: 1px solid white;
+            transition: width 0.5s;
+            height: 30px;
+            font-size: 14px;
+            border-radius: 4px;
+            padding: 0 10px;
+            margin-right: 10px;
+            opacity: 1;
+            width: 150px;
+            &:focus {
+              background-color: rgba(0, 0, 0, 0.8);
+            }
+          }
+          
+          .searchInputHidden{
+            visibility: hidden;
+            transition: width 0.5s;
+            width: 0;
+          }
         }
-  
         img {
           width: 30px;
           height: 30px;
