@@ -15,7 +15,7 @@ async function uploadFile(filePath) {
     
     s3.upload(params, function(err, data) {
         if (err) throw err;
-        console.log(`File uploaded successfully. *****${data}***** ${data.Location}`);
+        console.log(`File uploaded successfully. *****${data}***** https://${data.Location}`);
     });
 
 }

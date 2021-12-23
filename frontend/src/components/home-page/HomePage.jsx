@@ -10,7 +10,7 @@ import Navbar from './components/navbar/NavBar';
 
 import styles from './styles.module.scss'
 
-function Homepage(){
+function Homepage( {type} ){
     const {request} = useHttp();
     const auth = useContext(AuthContext);
     const [movies, setMovies] = useState([]);
@@ -21,6 +21,14 @@ function Homepage(){
             const data = await request('/api/movie/', 'GET', null, {
                 Authorization: `Bearer ${auth.token}`
             })
+            if(type === 'Film'){
+                setMovies(data.filter( (item) => item.type === 'Film'));
+                return;
+            }
+            if(type === 'Serial'){
+                setMovies(data.filter( (item) => item.type === 'Serial'));
+                return;
+            }
             setMovies(data);
             // eslint-disable-next-line no-console
             //console.log(data);
@@ -28,7 +36,7 @@ function Homepage(){
                throw error;
            }
         },
-        [request, auth.token]
+        [request, auth.token, type]
     );
 
     useEffect(() => {
@@ -36,24 +44,24 @@ function Homepage(){
     }, [getMovies])
 
     const handleAgeRating = (movies) => {
-        console.log('AgeRating > 15', movies.filter( (item) => item.ageRating > 15 && item));
+        // console.log('AgeRating > 15', movies.filter( (item) => item.ageRating > 15 && item));
         return movies.filter( (item) => item.ageRating > 15 && item);
     }
 
     const handleImdbRating = (movies) => {
-        console.log('ImdbRating > 8', movies.filter( (item) => item.apiIMDbId > 8 && item));
+        // console.log('ImdbRating > 8', movies.filter( (item) => item.apiIMDbId > 8 && item));
         return movies.filter( (item) => item.apiIMDbId > 8 && item);
     }
 
     const handleReleasesLastYear = (movies) => {
-        console.log('ReleasesLastYear', movies.filter( (item) => new Date(item.releaseDate).getFullYear() === (new Date().getFullYear() - 1) && item));
+        // console.log('ReleasesLastYear', movies.filter( (item) => new Date(item.releaseDate).getFullYear() === (new Date().getFullYear() - 1) && item));
         return movies.filter( (item) => new Date(item.releaseDate).getFullYear() === (new Date().getFullYear() - 1) && item);
     }
 
     return (
         <div className={styles.home}>
           <Navbar />
-          <Featured type={movies}/> 
+          <Featured type={type} movies={movies}/> 
           <List label="Age rating 16+" movies={handleAgeRating(movies)}/>
           <List label="IMDB Top Raiting"movies={handleImdbRating(movies)}/>
           <List label="Releases last year" movies={handleReleasesLastYear(movies)}/>

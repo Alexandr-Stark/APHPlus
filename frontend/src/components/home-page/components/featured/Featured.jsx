@@ -1,8 +1,9 @@
+/* eslint-disable no-useless-catch */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 import { InfoOutlined, PlayArrow } from "@material-ui/icons";
 import {useState, useEffect, useContext, useCallback, useRef } from 'react'
-import {useNavigate, generatePath, useLocation}from 'react-router-dom';
+import {useNavigate, generatePath, useLocation, Link}from 'react-router-dom';
 import { AuthContext } from "../../../../context/AuthContext";
 import { useHttp } from "../../../../hooks/http.hook";
 import styles from "./styles.module.scss";
@@ -32,8 +33,10 @@ const useRecursiveTimeout = (callback, delay = 1000) => {
   }, [delay]);
 };
 
-function Featured({ type }) {
+function Featured({ movies, type }) {
   const [movieId, setMovieId] = useState(0);
+  const [episodeId, setEpisodeId] = useState(null);
+  const [isSerial, setIsSerial] = useState(null);
 
   const {loading, request} = useHttp();
   const auth = useContext(AuthContext);
@@ -46,7 +49,7 @@ function Featured({ type }) {
     return Math.floor(Math.random() * (max - min) ) + min;
   }
 
-  useRecursiveTimeout(() => setMovieId(getRndInteger(0, type.length)), 10000);
+  useRecursiveTimeout(() => setMovieId(getRndInteger(0, movies.length)), 10000);
 
   const getGenres = useCallback(
     async () => {
@@ -64,10 +67,34 @@ function Featured({ type }) {
     [request, auth.token]
 );
 
+const lastViewedEpisode = useCallback(
+  async () => {
+     try {
+      const data = await request(`/api/movie/last-viewed-episode/${movies[movieId]?._id}?userId=${auth.userId}`, 'GET', null, {
+          Authorization: `Bearer ${auth.token}`
+      })
+      setEpisodeId(data);
+      // eslint-disable-next-line no-console
+      //console.log(data);
+     } catch (error) {
+        //  throw error;
+     }
+  },
+  [request, auth.token, type]
+);
+
+useEffect(() => {
+  movies[movieId]?.type === "Serial" && lastViewedEpisode();
+}, [movieId])
+
   useEffect(()=>{
     getGenres();
     const name = new URLSearchParams(search).get('genre');
-    if(name === 'Genre') navigate('/browse');
+    if(name === 'Genre') {
+      type === 'Serial' && navigate('/serial');
+      type === 'Film' && navigate('/movie');
+      type === 'Browse' && navigate('/browse');
+    }
   }, [search, getGenres]);
 
   const handleSelection = (event) => {
@@ -77,30 +104,34 @@ function Featured({ type }) {
   return (
     <div className={styles.featured}>
         <div className={styles.category}>
-          <span>{type[movieId]?.type === "Film" ? "Movies" : "Series"}</span>
+          <span>{isSerial ? "Movies" : "Series"}</span>
           <select onChange={handleSelection} name="genre" id="genre">
             <option>Genre</option>
             {genres.map( (item) => <option key={item._id} value={item.title}>{item.title}</option> )}
           </select>
         </div>
       <img
-        src={type[movieId]?.poster}
+        src={movies[movieId]?.poster}
         alt="No find poster"
       />
       <div className={styles.info}>
-        <p>{type[movieId]?.title}</p>
+        <p>{movies[movieId]?.title}</p>
         <span className={styles.desc}>
-        {type[movieId]?.movieDescription}
+        {movies[movieId]?.movieDescription}
         </span>
         <div className={styles.buttons}>
+          <Link to={`/watch/${movies[movieId]?._id}${movies[movieId]?.type === "Serial" ? `?episode=${episodeId}` : ''}`}>
           <button className={styles.play}>
             <PlayArrow />
             <span>Play</span>
           </button>
+          </Link>
+          <Link to={`/browse/${movies[movieId]?._id}`}>
           <button className={styles.more}>
             <InfoOutlined />
             <span>Info</span>
           </button>
+          </Link>
         </div>
       </div>
     </div>

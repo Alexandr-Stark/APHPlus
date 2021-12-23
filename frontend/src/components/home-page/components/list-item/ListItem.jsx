@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-catch */
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 import styles from "./styles.module.scss";
@@ -5,24 +6,68 @@ import tr from '../../../../assets/SPIDER-MAN - NO WAY HOME - Official Trailer (
 import {
   PlayArrow,
   Add,
-  ThumbUpAltOutlined,
-  ThumbDownOutlined,
+  Done
 } from "@material-ui/icons";
-import { useState } from "react";
+import { useState, useContext, useCallback, useEffect} from "react";
+import {useNavigate, generatePath, useLocation, Link}from 'react-router-dom';
+import { useHttp } from "../../../../hooks/http.hook";
+import { AuthContext } from "../../../../context/AuthContext";
 
  function ListItem({ index, movie }) {
   const [isHovered, setIsHovered] = useState(false);
-  const [movieDuration, setMovieDuration] = useState('0 hours 0 mins');
+  const [movieDuration, setMovieDuration] = useState('0 h 0 m');
+  const [episodeId, setEpisodeId] = useState(null);
+  const navigate = useNavigate();
+
+  const isSerial = movie?.type === 'Serial' ? true : false;
+
+  const {request} = useHttp();
+  const auth = useContext(AuthContext);
+
+  const lastViewedEpisode = useCallback(
+    async () => {
+       try {
+        const data = await request(`/api/movie/last-viewed-episode/${movie?._id}?userId=${auth.userId}`, 'GET', null, {
+            Authorization: `Bearer ${auth.token}`
+        })
+        setEpisodeId(data);
+        // eslint-disable-next-line no-console
+        //console.log(data);
+       } catch (error) {
+           throw error;
+       }
+    },
+    [request, auth.token]
+);
+
+useEffect(() => {
+  if(isSerial) lastViewedEpisode();
+}, [lastViewedEpisode])
 
     function getMovieDuration(){
       let duration = document.getElementById("#trailerPlayer")?.duration;
       let hours = Math.trunc(duration / 3600);
       let minutes = Math.trunc( ((duration / 3600) - hours) * 60);
-      setMovieDuration(`${hours} hours ${minutes} mins`);
+      setMovieDuration(`${hours} h ${minutes} m`);
     }
 
-  const trailer =
-    "https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c0fd273d2c6d9a064f3ae35579b2bbdf&profile_id=139&oauth2_token_id=57447761";
+    function watchDescription() {
+      navigate(`/browse?descr=${movie?._id}`)
+    }
+
+    async function addToFavorite() {
+      try {
+        const response = await request('api/movie/add-to-favorite', 'POST', { userId: auth.userId, movieId: movie?._id }, 
+        {
+          Authorization: `Bearer ${auth.token}`
+      });
+        console.log(response.message)
+        // eslint-disable-next-line no-empty
+      } catch (e) {}
+    }
+
+  // const trailer =
+  //   "https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c0fd273d2c6d9a064f3ae35579b2bbdf&profile_id=139&oauth2_token_id=57447761";
   return (
     <div
       className={styles.listItem}
@@ -36,21 +81,26 @@ import { useState } from "react";
       />
       {isHovered && (
         <div>
-          <video onPlay={getMovieDuration} id="#trailerPlayer" src="//storage.googleapis.com/media-session/caminandes/short.mp4#t=60.335772" autoPlay="autoplay" muted loop />
+          <video onPlay={getMovieDuration} id="#trailerPlayer" src={movie?.trailers[movie?.trailers.length-1].trailer} controls controlsList="nodownload" autoPlay="autoplay" muted loop />
           <div className={styles.itemInfo}>
             <div className={styles.icons}>
+            <Link to={`/watch/${movie?._id}${isSerial ? `?episode=${episodeId}` : ''}`}>
               <PlayArrow className={styles.icon}/>
-              <Add className={styles.icon}/>
-              <ThumbUpAltOutlined className={styles.icon} />
-              <ThumbDownOutlined className={styles.icon} />
+              </Link>
+              <Add onClick={addToFavorite} className={styles.icon}/>
+              <Link to={`/browse/${movie?._id}`}>
+                <Done onClick={watchDescription} className={styles.icon} />
+              </Link>
+              {/* <ThumbUpAltOutlined onClick={watchDescription} className={styles.icon} /> */}
             </div>
             <div className={styles.itemInfoTop}>
               <span>{movie?.type === 'Film' ? movieDuration : `${movie?.seasons.length} seasons`}</span>
               <span className={styles.limit}>{movie?.ageRating}+</span>
               <span>{new Date(movie?.releaseDate).getFullYear()}</span>
+              <span className={styles.rating}>| {movie?.apiIMDbId} <p>⭐</p></span>
             </div>
             <div className={styles.desc}>
-              IMDB: {movie?.apiIMDbId} ⭐
+            {movie?.title}
             </div>
             <div className={styles.genre}>{movie?.genres.map( (i, ind) => ind === movie?.genres.length - 1 ? ` ${i.title}` : ` ${i.title} • `)}</div>
           </div>

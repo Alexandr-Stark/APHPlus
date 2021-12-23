@@ -9,8 +9,6 @@ const uploadFile = require('./helpers/aws.upload');
 
 const app = express();
 
-uploadFile("D:/Movie/SPIDER-MAN-NWH-1.mp4");
-
 app.use(express.json({extended: true}));
 
 app.use('/api/auth', authRouter);
