@@ -19,10 +19,12 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-
+      a{
+        z-index: 100;
+      }
       .logo {
         height: 40px;
-        z-index: 999;
+        z-index: 99;
       }
     }
   }
