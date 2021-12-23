@@ -26,7 +26,7 @@ function Navbar(){
       <div className={styles.container}>
         <div className={styles.left}>
           <img
-            src="https://asd-internship.fra1.digitaloceanspaces.com/aphlogo.png"
+            src="https://asd-internship.fra1.digitaloceanspaces.com/aphpluslogo.png"
             alt=""
           />
           <div className={styles.menu}>

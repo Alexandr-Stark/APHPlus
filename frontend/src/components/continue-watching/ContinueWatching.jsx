@@ -59,8 +59,6 @@ function ContinueWatching({title}) {
           Authorization: `Bearer ${auth.token}`
       });
       getMovies();
-        // eslint-disable-next-line no-console
-        console.log(response.message)
         // eslint-disable-next-line no-empty
       } catch (e) {}
     }

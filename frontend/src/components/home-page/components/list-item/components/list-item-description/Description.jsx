@@ -33,9 +33,7 @@ function Description({ index, type }) {
       const data = await request(`/api/movie/${params.id}`, 'GET', null, {
         Authorization: `Bearer ${auth.token}`,
       });
-      setMovie(data);
-      // eslint-disable-next-line no-console
-      console.log(data);
+      setMovie(data);     
     } catch (error) {
       throw error;
     }
