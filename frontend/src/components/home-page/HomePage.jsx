@@ -44,17 +44,14 @@ function Homepage( {type} ){
     }, [getMovies])
 
     const handleAgeRating = (movies) => {
-        // console.log('AgeRating > 15', movies.filter( (item) => item.ageRating > 15 && item));
         return movies.filter( (item) => item.ageRating > 15 && item);
     }
 
     const handleImdbRating = (movies) => {
-        // console.log('ImdbRating > 8', movies.filter( (item) => item.apiIMDbId > 8 && item));
         return movies.filter( (item) => item.apiIMDbId > 8 && item);
     }
 
     const handleReleasesLastYear = (movies) => {
-        // console.log('ReleasesLastYear', movies.filter( (item) => new Date(item.releaseDate).getFullYear() === (new Date().getFullYear() - 1) && item));
         return movies.filter( (item) => new Date(item.releaseDate).getFullYear() === (new Date().getFullYear() - 1) && item);
     }
 

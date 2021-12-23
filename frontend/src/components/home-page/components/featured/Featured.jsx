@@ -36,7 +36,8 @@ const useRecursiveTimeout = (callback, delay = 1000) => {
 function Featured({ movies, type }) {
   const [movieId, setMovieId] = useState(0);
   const [episodeId, setEpisodeId] = useState(null);
-  const [isSerial, setIsSerial] = useState(null);
+
+  const isSerial = movies[movieId]?.type === "Serial" || false;
 
   const {loading, request} = useHttp();
   const auth = useContext(AuthContext);
@@ -80,12 +81,12 @@ const lastViewedEpisode = useCallback(
         //  throw error;
      }
   },
-  [request, auth.token, type]
+  [request, auth.token, isSerial]
 );
 
 useEffect(() => {
   movies[movieId]?.type === "Serial" && lastViewedEpisode();
-}, [movieId])
+}, [lastViewedEpisode, isSerial])
 
   useEffect(()=>{
     getGenres();
@@ -104,7 +105,7 @@ useEffect(() => {
   return (
     <div className={styles.featured}>
         <div className={styles.category}>
-          <span>{isSerial ? "Movies" : "Series"}</span>
+          <span>{isSerial ? "Serial" : "Movie"}</span>
           <select onChange={handleSelection} name="genre" id="genre">
             <option>Genre</option>
             {genres.map( (item) => <option key={item._id} value={item.title}>{item.title}</option> )}
@@ -120,7 +121,7 @@ useEffect(() => {
         {movies[movieId]?.movieDescription}
         </span>
         <div className={styles.buttons}>
-          <Link to={`/watch/${movies[movieId]?._id}${movies[movieId]?.type === "Serial" ? `?episode=${episodeId}` : ''}`}>
+          <Link to={`/watch/${movies[movieId]?._id}${isSerial ? `?episode=${episodeId}` : ''}`}>
           <button className={styles.play}>
             <PlayArrow />
             <span>Play</span>

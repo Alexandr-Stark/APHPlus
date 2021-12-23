@@ -11,7 +11,6 @@ import { useHttp } from '../../hooks/http.hook';
 function Video() {
   const { request } = useHttp();
   const auth = useContext(AuthContext);
-  // eslint-disable-next-line no-unused-vars
   const [movie, setMovie] = useState(null);
   const [episode, setEpisode] = useState(null);
   const [videoCurrentTime, setVideoCurrentTime] = useState(0);
@@ -35,23 +34,6 @@ function Video() {
     }
   }, [request, auth.token]);
 
-  //#1
-  // const lastViewedEpisode = useCallback(
-  //   async () => {
-  //      try {
-  //       const data = await request(`/api/movie/last-viewed-episode/${movie?._id}?userId=${auth.userId}`, 'GET', null, {
-  //           Authorization: `Bearer ${auth.token}`
-  //       })
-  //       setEpisode(data);
-  //       // eslint-disable-next-line no-console
-  //       //console.log(data);
-  //      } catch (error) {
-  //         //  throw error;
-  //      }
-  //   },
-  //   [request, auth.token, movie]
-  // );
-
   const getEpisodeCredentials = useCallback(
     async () => {
        try {
@@ -71,14 +53,12 @@ function Video() {
   const getCurrentMovieTime = useCallback(async (isSerial) => {
     // eslint-disable-next-line no-useless-catch
     try {
-      // console.log(isSerial);
       const data = await request(`/api/movie/video-current-time/${params.id}?userId=${auth.userId}${isSerial ? `&episodeId=${new URLSearchParams(search).get('episode')}` : ''}`, 'GET', null, {
         Authorization: `Bearer ${auth.token}`,
       });
       setVideoCurrentTime(data);
-      console.log('getCurrentMovieTime', data);
+      // console.log('getCurrentMovieTime', data);
       //setMovie(data);
-      // eslint-disable-next-line no-console
     } catch (error) {
       throw error;
     }
@@ -102,7 +82,7 @@ function Video() {
           Authorization: `Bearer ${auth.token}`,
         });
         // eslint-disable-next-line no-console
-        console.log('storeCurrentMovieTime - Serial', parameters);
+        // console.log('storeCurrentMovieTime - Serial', parameters);
       } catch (error) {
         throw error;
       }
@@ -116,7 +96,7 @@ function Video() {
         Authorization: `Bearer ${auth.token}`,
       });
       // eslint-disable-next-line no-console
-      console.log('storeCurrentMovieTime - Film', parameters);
+      // console.log('storeCurrentMovieTime - Film', parameters);
     } catch (error) {
       throw error;
     }
@@ -133,7 +113,6 @@ function Video() {
   const goBack = ()=>{
     const time = document.getElementById("#player").currentTime;
     storeCurrentMovieTime(time);
-    console.log(time);
   }
 
   return (

@@ -35,7 +35,6 @@ function ContinueWatching({title}) {
             }
            } catch (error) {
               //  throw error;
-              console.log(error);
               setMovies([]);
            }
         },
@@ -49,9 +48,7 @@ function ContinueWatching({title}) {
           Authorization: `Bearer ${auth.token}`
       });
       getMovies();
-        // eslint-disable-next-line no-console
-        console.log(response.message)
-        // eslint-disable-next-line no-empty
+      // eslint-disable-next-line no-empty
       } catch (e) {}
     }
 
