@@ -57,7 +57,10 @@ useEffect(() => {
         alt=""
       />
       {isHovered && (
-        <>
+        <div className={styles.hovered}>
+        <img className={styles.img}
+          src={movie?.poster}
+        />
           <video src={movie?.trailers[movie?.trailers.length-1].trailer} autoPlay={true} loop />
           <div className={styles.itemInfo}>
             <div className={styles.icons}>
@@ -79,7 +82,7 @@ useEffect(() => {
             </div>
             <div className={styles.genre}>Action</div>
           </div>
-        </>
+        </div>
       )}
     </div>
   );

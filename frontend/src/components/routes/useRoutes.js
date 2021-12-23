@@ -1,6 +1,6 @@
 import {
   Routes as Switch,
-  Route, Navigate
+  Route
 } from 'react-router-dom';
 import ContinueWatching from '../continue-watching/ContinueWatching';
 import Description from '../home-page/components/list-item/components/list-item-description/Description';
@@ -8,6 +8,7 @@ import Homepage from '../home-page/HomePage';
 import Loginpage from '../login-page/LoginPage';
 import Regpage from '../registration-page/RegistrationPage';
 import Video from '../video-player/Video';
+import Start from '../startpage/Startpage';
 
 export function useRoutes(isAuthenticated) {
   if (isAuthenticated) {
@@ -28,7 +29,7 @@ export function useRoutes(isAuthenticated) {
     <Switch>
       <Route path="/sign-up" element={<Regpage />} exact />
       <Route index path="/sign-in" element={<Loginpage />} exact />
-      <Route path="/" element={<Navigate to ="/sign-in" />}/>
+      <Route path="/" element={<Start />}/>
     </Switch>
   ); 
 }

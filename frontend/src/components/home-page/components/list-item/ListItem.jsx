@@ -80,7 +80,10 @@ useEffect(() => {
         alt=""
       />
       {isHovered && (
-        <div>
+        <div className={styles.hovered}>
+          <img className={styles.img}
+            src={movie?.poster}
+          />
           <video onPlay={getMovieDuration} id="#trailerPlayer" src={movie?.trailers[movie?.trailers.length-1].trailer} controls controlsList="nodownload" autoPlay="autoplay" muted loop />
           <div className={styles.itemInfo}>
             <div className={styles.icons}>

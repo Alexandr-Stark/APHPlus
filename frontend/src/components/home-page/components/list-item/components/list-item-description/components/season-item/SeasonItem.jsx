@@ -20,7 +20,10 @@ export default function SeasonItem({ index, movieId, season, episode }) {
         alt=""
       />
       {isHovered && (
-        <>
+        <div className={styles.hovered}>
+          <img className={styles.img}
+            src={episode?.poster}
+          />
           <div className={styles.itemInfo}>
             <div className={styles.icons}>
               <Link to={`/watch/${movieId}?episode=${episode?._id}`}>
@@ -37,7 +40,7 @@ export default function SeasonItem({ index, movieId, season, episode }) {
             {episode?.episodeDescription}
             </div>
           </div>
-        </>
+        </div>
       )}
     </div>
   );

@@ -1,0 +1,26 @@
+[
+    {
+      "id": 1,
+      "title": "Enjoy on your TV.",
+      "subTitle": "Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more.",
+      "image": "https://uploads-ssl.webflow.com/6163ffb6bbf68f5a2819566f/61c4dfafc166ab48c9db5fdc_advert3.png",
+      "alt": "Tiger King on APH+",
+      "direction": "row"
+    },
+    {
+      "id": 2,
+      "title": "Download your programmes to watch on the go.",
+      "subTitle": "Save your data and watch all your favourites offline.",
+      "image": "https://uploads-ssl.webflow.com/6163ffb6bbf68f5a2819566f/61c4dfaf96c1c10452ef6ef2_advert2.png",
+      "alt": "Watch on mobile",
+      "direction": "row-reverse"
+    },
+    {
+      "id": 3,
+      "title": "Watch everywhere.",
+      "subTitle": "Stream unlimited films and TV programmes on your phone, tablet, laptop and TV without paying more.",
+      "image": "https://uploads-ssl.webflow.com/6163ffb6bbf68f5a2819566f/61c4dfafc166ab48c9db5fdc_advert3.png",
+      "alt": "Money Heist on APH+",
+      "direction": "row"
+    }
+  ]
