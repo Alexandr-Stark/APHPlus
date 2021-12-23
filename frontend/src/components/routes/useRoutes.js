@@ -1,28 +1,34 @@
 import {
   Routes as Switch,
-  Route,
+  Route, Navigate
 } from 'react-router-dom';
-import Loginpage from '../loginpage/Loginpage';
-import Regpage from '../registrationpage/RegistrationPage';
+import ContinueWatching from '../continue-watching/ContinueWatching';
+import Description from '../home-page/components/list-item/components/list-item-description/Description';
+import Homepage from '../home-page/HomePage';
+import Loginpage from '../login-page/LoginPage';
+import Regpage from '../registration-page/RegistrationPage';
+import Video from '../video-player/Video';
 
 export function useRoutes(isAuthenticated) {
   if (isAuthenticated) {
     return (
       <Switch>
-        <Route path="/browse" element={<div>Home</div>} exact />
-        <Route path="/movie" element={<div>Movies</div>} exact />
-        <Route path="/serial" element={<div>Serials</div>} exact />
-        <Route path="/my-list" element={<div>My list</div>} exact />
-        <Route path="/continue-watching" element={<div>Continue watching</div>} exact />
+        <Route path="/browse" element={<Homepage type="Browse"/>} exact />
+        <Route path="/browse/:id" element={<Description />} exact />
+        <Route path="/watch/:id" element={<Video/>} exact />
+        <Route path="/movie" element={<Homepage type="Film"/>} exact />
+        <Route path="/serial" element={<Homepage type="Serial"/>} exact />
+        <Route path="/my-list" element={<ContinueWatching title="My List"/>} exact />
+        <Route path="/continue-watching" element={<ContinueWatching title="Continue Watching"/>} exact />
       </Switch>
     );
   }
 
   return (
     <Switch>
-      <Route path="/" element={<div>Blyat` sho za huinya</div>} exact />
       <Route path="/sign-up" element={<Regpage />} exact />
       <Route index path="/sign-in" element={<Loginpage />} exact />
+      <Route path="/" element={<Navigate to ="/sign-in" />}/>
     </Switch>
   ); 
 }

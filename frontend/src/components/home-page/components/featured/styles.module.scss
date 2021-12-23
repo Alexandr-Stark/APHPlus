@@ -1,0 +1,132 @@
+@import '../../../../assets/styles/normalize.css';
+
+.featured {
+  height: 56.25vw;
+  min-width: 500px;
+  position: relative;
+  font-family: 'Montserrat', sans-serif;
+
+  .category {
+    position: absolute;
+    top: 80px;
+    left: 50px;
+    font-size: 22px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: white;
+    z-index: 199;
+    display: flex;
+    align-items: center;
+    > span {
+      background-color: rgb(255 0 0);
+      padding: 1px 19px;
+      border-radius: 4px;
+    }
+
+    select {
+      font-family: 'Montserrat', sans-serif;
+      border-radius: 2px;
+      cursor: pointer;
+      background-color: #181717;
+      border: 1px solid white;
+      color: white;
+      margin-left: 20px;
+      padding: 5px;
+    }
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .info {
+    position: absolute;
+    bottom: 15%;
+    left: 4%;
+    width: 40%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(22, 22, 22, 0.5);
+    padding: 10px 25px;
+    border-radius: 5px;
+    p {
+      font-size: 50px;
+      font-weight: 700;
+    }
+    .desc {
+      margin: 20px 0px;
+      font-size: 1.4vw;
+      font-weight: 400;
+    }
+
+    .buttons {
+      display: flex;
+
+      button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        font-weight: 500;
+        margin-right: 10px;
+        cursor: pointer;
+
+        &.play {
+          background-color: white;
+          color: #0b0b0b;
+        }
+
+        &.more {
+          background-color: rgb(109, 109, 110);
+          color: white;
+          &:hover {
+            background-color: rgba(109, 109, 110, 0.6);
+          }
+        }
+
+        span {
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .featured {
+    .category {
+      top: 65px;
+    }
+    .info {
+      .desc {
+        font-size: 1.6vw;
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 540px) {
+  .featured {
+    .category {
+      top: 58px;
+      left: 20px;
+      font-size: 20px;
+      select {
+        font-size: 10px;
+      }
+    }
+    .info {
+      .desc {
+        margin: 10px 0px;
+        font-size: 8px;
+      }
+    }
+  }
+}
