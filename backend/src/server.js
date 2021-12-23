@@ -6,7 +6,7 @@ const movieRouter = require('./routes/movie/movie.router');
 const genreRouter = require('./routes/genre/genre.router');
 
 const uploadFile = require('./helpers/aws.upload');
-
+uploadFile('D:/Photo/aphpluslogo.png');
 const app = express();
 
 app.use(express.json({extended: true}));

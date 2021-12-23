@@ -14,7 +14,7 @@ function Start() {
         <div className={styles.header}>
           <div className={styles.container}>
             <img
-              src="https://asd-internship.fra1.digitaloceanspaces.com/aphlogo.png"
+              src="https://asd-internship.fra1.digitaloceanspaces.com/aphpluslogo.png"
               alt=""
               className={styles.logo}
             />

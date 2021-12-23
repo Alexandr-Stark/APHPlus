@@ -60,8 +60,7 @@ useEffect(() => {
         {
           Authorization: `Bearer ${auth.token}`
       });
-        console.log(response.message)
-        // eslint-disable-next-line no-empty
+      // eslint-disable-next-line no-empty
       } catch (e) {}
     }
 

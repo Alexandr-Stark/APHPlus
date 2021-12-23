@@ -38,7 +38,7 @@ function Loginpage() {
           <Link to={"/"}>
           <img
             className={styles.logo}
-            src="https://asd-internship.fra1.digitaloceanspaces.com/aphlogo.png"
+            src="https://asd-internship.fra1.digitaloceanspaces.com/aphpluslogo.png"
             alt="Something went wrong..."
           />
           </Link>
