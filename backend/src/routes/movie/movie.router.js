@@ -115,7 +115,6 @@ movieRouter.post('/remove-from-favorite', auth, async (request, response) => {
 movieRouter.get('/my-list/:userId', /*auth,*/ async (request, response) => {
   try {
     const favorites = await Favorite.findOne({ userId: request.params.userId });
-    // .populate('movies');
     response.status(200).json(favorites.movies);
   } catch (error) {
     response
@@ -130,7 +129,6 @@ movieRouter.post('/remove-from-contunue-watching', /*auth,*/ async (request, res
     const { userId, movieId, isSerial } = request.body;
 
     const isContinueWatchingExists = await ContinueWatching.findOne({ userId });
-    // console.log(isContinueWatchingExists);
 
     if (!isContinueWatchingExists) {
       return response
@@ -163,19 +161,6 @@ movieRouter.post('/remove-from-contunue-watching', /*auth,*/ async (request, res
       .status(200)
       .json({ message: `Movie - deleted from favorite list` });
     }
-
-    // if (!isContinueWatchingExists.films.find( item => item.filmId === movieId)){
-    //   return response
-    //     .status(400)
-    //     .json({ message: `Movie - not exists in continue watch list` });
-    // }
-
-    // isFavoriteExists.movies.splice(isFavoriteExists.movies.indexOf(movieId), 1);
-    // isFavoriteExists.modifiedAt = new Date();
-    // await isFavoriteExists.save();
-    // response
-    //   .status(200)
-    //   .json({ message: `Movie - deleted from favorite list` });
   } catch (error) {
     response
       .status(500)
@@ -184,7 +169,7 @@ movieRouter.post('/remove-from-contunue-watching', /*auth,*/ async (request, res
   }
 });
 
-movieRouter.get('/contunue-watching/:userId', /*auth,*/ async (request, response) => {
+movieRouter.get('/contunue-watching/:userId', auth, async (request, response) => {
   try {
     const continueWatching = await ContinueWatching.findOne({ userId: request.params.userId });
     const serialSet = new Set(continueWatching.serials.map( (item) => item.serialId.toString()));
@@ -215,13 +200,12 @@ movieRouter.get('/favorite/getall', auth, async (request, response) => {
   }
 });
 
-movieRouter.get('/episode-credentials/:id', /*auth,*/ async (request, response) => {
+movieRouter.get('/episode-credentials/:id', auth, async (request, response) => {
   try {
     const movies = await Movie.findById(request.params.id);
     if(!movies) return response.status(500).json({message: 'Not found movie'});
       const episode = movies.seasons.map( (item) => item.episodes.find( (ep) => ep._id.toString() === request.query.episodeId.toString() && ep))
       .find(i => i !== null && i);
-      // console.log('episode', episode);
       return response.status(200).json(episode);
   } catch (error) {
     response
@@ -231,11 +215,11 @@ movieRouter.get('/episode-credentials/:id', /*auth,*/ async (request, response) 
   }
 });
 
-movieRouter.get('/last-viewed-episode/:id', /*auth,*/ async (request, response) => {
+movieRouter.get('/last-viewed-episode/:id', auth, async (request, response) => {
   try {
     const serialsList = await ContinueWatching.findOne({userId: request.query.userId});
     const episode = serialsList.serials.find( (item) => (item.serialId.toString() ===  request.params.id && item.active === true) && item.episodeId);
-    // console.log(episodeId.episodeId);
+  
     if(!episode){
       const movies = await Movie.findById(request.params.id);
       if(!movies) return response.status(500).json({message: 'Not found movie'});
@@ -251,20 +235,18 @@ movieRouter.get('/last-viewed-episode/:id', /*auth,*/ async (request, response) 
   }
 });
 
-movieRouter.get('/video-current-time/:id', /*auth,*/ async (request, response) => {
+movieRouter.get('/video-current-time/:id', auth, async (request, response) => {
   try {
     let currentTime = 0;
     const watchList = await ContinueWatching.findOne({userId: request.query.userId});
     if(request.query.episodeId){
       const episodeTime = watchList.serials.find( (item) => ( (item.serialId.toString() === request.params.id) && (item.episodeId.toString() === request.query.episodeId) ) && item.currentTime);
-      //const episodeTime = watchList.serials[1]
-      // console.log('episodeTime', episodeTime);
+  
       if(episodeTime) currentTime = episodeTime.currentTime;
       return response.status(200).json(currentTime);
     }
     const filmTime = watchList.films.find( (item) => item.filmId.toString() === request.params.id && item.currentTime);
     if(filmTime) currentTime = filmTime.currentTime;
-    // console.log('I am here');
     return response.status(200).json(currentTime);
   } catch (error) {
     response
@@ -274,7 +256,7 @@ movieRouter.get('/video-current-time/:id', /*auth,*/ async (request, response) =
   }
 });
 
-movieRouter.post('/video-current-time', /*auth,*/ async (request, response) => {
+movieRouter.post('/video-current-time', auth, async (request, response) => {
   try {
     const { userId, filmId, serialId, episodeId, currentTime } = request.body;
     let movie = await ContinueWatching.findOne({ userId });

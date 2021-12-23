@@ -2,7 +2,6 @@
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 import styles from "./styles.module.scss";
-import tr from '../../../../assets/SPIDER-MAN - NO WAY HOME - Official Trailer (HD).mp4'
 import {
   PlayArrow,
   Add,
@@ -37,12 +36,12 @@ import { AuthContext } from "../../../../context/AuthContext";
            throw error;
        }
     },
-    [request, auth.token]
+    [request, auth.token, isSerial]
 );
 
 useEffect(() => {
   if(isSerial) lastViewedEpisode();
-}, [lastViewedEpisode])
+}, [lastViewedEpisode, isSerial])
 
     function getMovieDuration(){
       let duration = document.getElementById("#trailerPlayer")?.duration;
@@ -66,8 +65,6 @@ useEffect(() => {
       } catch (e) {}
     }
 
-  // const trailer =
-  //   "https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c0fd273d2c6d9a064f3ae35579b2bbdf&profile_id=139&oauth2_token_id=57447761";
   return (
     <div
       className={styles.listItem}
@@ -91,7 +88,6 @@ useEffect(() => {
               <Link to={`/browse/${movie?._id}`}>
                 <Done onClick={watchDescription} className={styles.icon} />
               </Link>
-              {/* <ThumbUpAltOutlined onClick={watchDescription} className={styles.icon} /> */}
             </div>
             <div className={styles.itemInfoTop}>
               <span>{movie?.type === 'Film' ? movieDuration : `${movie?.seasons.length} seasons`}</span>
