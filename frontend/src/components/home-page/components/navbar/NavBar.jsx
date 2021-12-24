@@ -1,7 +1,5 @@
-/* eslint-disable no-unused-vars */
-import { ArrowDropDown, Notifications, Search } from "@material-ui/icons";
-// eslint-disable-next-line no-unused-vars
-import {React, useContext, useCallback, useEffect, useState} from 'react';
+import { ArrowDropDown, Search } from "@material-ui/icons";
+import {React, useContext, useState} from 'react';
 import {useNavigate, Link} from 'react-router-dom' 
 import { AuthContext } from "../../../../context/AuthContext";
 import styles from "./styles.module.scss";

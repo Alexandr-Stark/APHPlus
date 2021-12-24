@@ -1,6 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable no-useless-catch */
-
 import {React, useContext, useCallback, useEffect, useState} from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import { useHttp } from '../../hooks/http.hook';
@@ -17,6 +14,7 @@ function Homepage( {type} ){
 
     const getMovies = useCallback(
         async () => {
+           // eslint-disable-next-line no-useless-catch
            try {
             const data = await request('/api/movie/', 'GET', null, {
                 Authorization: `Bearer ${auth.token}`
@@ -30,8 +28,6 @@ function Homepage( {type} ){
                 return;
             }
             setMovies(data);
-            // eslint-disable-next-line no-console
-            //console.log(data);
            } catch (error) {
                throw error;
            }

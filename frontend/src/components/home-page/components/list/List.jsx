@@ -1,14 +1,10 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
 import {
   ArrowBackIosOutlined,
   ArrowForwardIosOutlined,
-  ContactSupportOutlined,
 } from '@material-ui/icons';
 import { useRef, useState } from 'react';
 import ListItem from '../list-item/ListItem';
-import { useNavigate, generatePath, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import styles from './styles.module.scss';
 
 function List({ movies, label }) {
@@ -46,14 +42,11 @@ function List({ movies, label }) {
 
   function handleGenre(arr) {
     if (genreName === null) return movies;
-    //console.log(`${genreName} - handleGenre() ${label}:`, arr.map( (item) => item.genres.map((genre) => genre.title ).includes(genreName) && item));
-    // return arr.map( (item) => item.genres.map((genre) => genre.title ).includes(genreName) && item);
     const moviesByGenre = [];
     arr.forEach ( (item) => {
       const genres = item.genres.map( (genre) => genre.title);
       if(genres.includes(genreName)) moviesByGenre.push(item);
     });
-    // console.log(`${genreName} - handleGenre() ${label}:`, moviesByGenre);
     return moviesByGenre;
   }
 

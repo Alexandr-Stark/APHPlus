@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import styles from "./styles.module.scss";
 import {
   PlayArrow,
@@ -10,8 +9,8 @@ import { useHttp } from "../../../hooks/http.hook";
 import { AuthContext } from "../../../context/AuthContext";
 import { useNavigate, Link} from 'react-router-dom';
 
-function Item({ movie, index, removeControl }) {
-  const {request, loading} = useHttp();
+function Item({ movie, removeControl }) {
+  const {request} = useHttp();
   const auth = useContext(AuthContext);
   const [isHovered, setIsHovered] = useState(false);
   const [episodeId, setEpisodeId] = useState(null);
@@ -31,10 +30,8 @@ function Item({ movie, index, removeControl }) {
             Authorization: `Bearer ${auth.token}`
         })
         setEpisodeId(data);
-        // eslint-disable-next-line no-console
-        //console.log(data);
        } catch (error) {
-           throw error;
+          //  throw error;
        }
     },
     [request, auth.token]

@@ -1,6 +1,3 @@
-/* eslint-disable no-useless-catch */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
 import { InfoOutlined, PlayArrow } from "@material-ui/icons";
 import {useState, useEffect, useContext, useCallback, useRef } from 'react'
 import {useNavigate, generatePath, useLocation, Link}from 'react-router-dom';
@@ -39,7 +36,7 @@ function Featured({ movies, type }) {
 
   const isSerial = movies[movieId]?.type === "Serial" || false;
 
-  const {loading, request} = useHttp();
+  const {request} = useHttp();
   const auth = useContext(AuthContext);
   const [genres, setGenres] = useState([]);
 
@@ -59,10 +56,8 @@ function Featured({ movies, type }) {
             Authorization: `Bearer ${auth.token}`
         })
         setGenres(data);
-        //console.log(data);
        } catch (error) {
-           // eslint-disable-next-line no-console
-           console.log(error);
+          //  throw error;
        }
     },
     [request, auth.token]
@@ -75,8 +70,6 @@ const lastViewedEpisode = useCallback(
           Authorization: `Bearer ${auth.token}`
       })
       setEpisodeId(data);
-      // eslint-disable-next-line no-console
-      //console.log(data);
      } catch (error) {
         //  throw error;
      }

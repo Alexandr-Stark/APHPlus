@@ -1,10 +1,6 @@
-/* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-useless-catch */
 import {
   ArrowBackOutlined,
   PlayArrow,
-  // eslint-disable-next-line no-unused-vars
   Add,
 } from '@material-ui/icons';
 import styles from './styles.module.scss';
@@ -17,11 +13,9 @@ import { useParams } from 'react-router-dom';
 import { AuthContext } from '../../../../../../context/AuthContext';
 import { useHttp } from '../../../../../../hooks/http.hook';
 
-// eslint-disable-next-line no-unused-vars
-function Description({ index, type }) {
+function Description() {
   const { request } = useHttp();
   const auth = useContext(AuthContext);
-  // eslint-disable-next-line no-unused-vars
   const [movie, setMovie] = useState(null);
   const [episodeId, setEpisodeId] = useState(null);
   const params = useParams();
@@ -41,13 +35,12 @@ function Description({ index, type }) {
 
   const lastViewedEpisode = useCallback(
     async () => {
+       // eslint-disable-next-line no-useless-catch
        try {
         const data = await request(`/api/movie/last-viewed-episode/${movie?._id}?userId=${auth.userId}`, 'GET', null, {
             Authorization: `Bearer ${auth.token}`
         })
         setEpisodeId(data);
-        // eslint-disable-next-line no-console
-        //console.log(data);
        } catch (error) {
            throw error;
        }
@@ -57,13 +50,14 @@ function Description({ index, type }) {
 
 async function addToFavorite() {
   try {
-    const response = await request('/api/movie/add-to-favorite', 'POST', { userId: auth.userId, movieId: movie?._id }, 
+     await request('/api/movie/add-to-favorite', 'POST', { userId: auth.userId, movieId: movie?._id }, 
     {
       Authorization: `Bearer ${auth.token}`
   });
-    console.log(response.message)
     // eslint-disable-next-line no-empty
-  } catch (e) {}
+  } catch (e) {
+    // throw e
+  }
 }
 
   useEffect(() => {

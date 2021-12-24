@@ -1,10 +1,9 @@
-/* eslint-disable no-unused-vars */
 import { React, useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useHttp } from '../../hooks/http.hook';
-import styles from './styles.module.scss';
 import homeImg from '../../assets/images/registration/home.png';
 import { AuthContext } from '../../context/AuthContext';
+import styles from './styles.module.scss';
 
 function Regpage() {
   const [form, setForm] = useState({
@@ -37,11 +36,13 @@ function Regpage() {
   }
 
   async function serverAction() {
+    // eslint-disable-next-line no-useless-catch
     try {
       await request('api/auth/sign-up', 'POST', { ...form });
       if(auth.ready) navigate('/sign-in');
-      // eslint-disable-next-line no-empty
-    } catch (e) {}
+    } catch (e) {
+      // throw e
+    }
   }
 
   return (
