@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { React, useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
@@ -23,12 +22,14 @@ function Loginpage() {
   }
 
   async function serverAction() {
+    // eslint-disable-next-line no-useless-catch
     try {
       const response = await request('api/auth/sign-in', 'POST', { ...form });
       auth.login(response.token, response.userId);
       if(auth.ready) navigate('/browse');
-      // eslint-disable-next-line no-empty
-    } catch (e) {}
+    } catch (e) {
+      // throw e
+    }
   }
 
   return (

@@ -1,10 +1,8 @@
 /* eslint-disable no-useless-catch */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
 import {useContext, useState, useCallback, useEffect} from 'react';
 import { ArrowBackOutlined } from "@material-ui/icons";
 import styles from "./styles.module.scss";
-import {useNavigate, generatePath, useLocation, useParams, Link}from 'react-router-dom';
+import { useLocation, useParams, Link}from 'react-router-dom';
 import { AuthContext } from "../../context/AuthContext";
 import { useHttp } from '../../hooks/http.hook';
 
@@ -19,15 +17,12 @@ function Video() {
  const [isSerial, setIsSerial] = useState(null);
 
   const getMovie = useCallback(async () => {
-    // eslint-disable-next-line no-useless-catch
     try {
       const data = await request(`/api/movie/${params.id}`, 'GET', null, {
         Authorization: `Bearer ${auth.token}`,
       });
       setMovie(data);
       setIsSerial(data?.type === 'Serial' || false);
-      // eslint-disable-next-line no-console
-      // console.log(data);
       getCurrentMovieTime(data?.type === 'Serial' ? true : false);
     } catch (error) {
       throw error;
@@ -41,8 +36,6 @@ function Video() {
             Authorization: `Bearer ${auth.token}`
         })
         setEpisode(data);
-        // eslint-disable-next-line no-console
-        //console.log(data);
        } catch (error) {
           //  throw error;
        }
@@ -51,21 +44,17 @@ function Video() {
   );
 
   const getCurrentMovieTime = useCallback(async (isSerial) => {
-    // eslint-disable-next-line no-useless-catch
     try {
       const data = await request(`/api/movie/video-current-time/${params.id}?userId=${auth.userId}${isSerial ? `&episodeId=${new URLSearchParams(search).get('episode')}` : ''}`, 'GET', null, {
         Authorization: `Bearer ${auth.token}`,
       });
       setVideoCurrentTime(data);
-      // console.log('getCurrentMovieTime', data);
-      //setMovie(data);
     } catch (error) {
       throw error;
     }
   }, [request, auth.token]);
 
   const storeCurrentMovieTime = async (currentTime) => {
-    // eslint-disable-next-line no-useless-catch
     const parameters = {
       userId: auth.userId,
       filmId: null,
@@ -78,11 +67,9 @@ function Video() {
       parameters.episodeId = new URLSearchParams(search).get('episode');
       parameters.currentTime = currentTime; 
       try {
-        const data = await request(`api/movie/video-current-time`, 'POST', {...parameters}, {
+          await request(`api/movie/video-current-time`, 'POST', {...parameters}, {
           Authorization: `Bearer ${auth.token}`,
         });
-        // eslint-disable-next-line no-console
-        // console.log('storeCurrentMovieTime - Serial', parameters);
       } catch (error) {
         throw error;
       }
@@ -92,11 +79,9 @@ function Video() {
     parameters.filmId = movie?._id;
     parameters.currentTime = currentTime;
     try {
-      const data = await request(`api/movie/video-current-time`, 'POST', {...parameters}, {
+        await request(`api/movie/video-current-time`, 'POST', {...parameters}, {
         Authorization: `Bearer ${auth.token}`,
       });
-      // eslint-disable-next-line no-console
-      // console.log('storeCurrentMovieTime - Film', parameters);
     } catch (error) {
       throw error;
     }

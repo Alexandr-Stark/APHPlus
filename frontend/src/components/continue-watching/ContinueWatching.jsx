@@ -1,6 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable no-useless-catch */
-/* eslint-disable no-unused-vars */
 import { useHttp } from "../../hooks/http.hook";
 import {useState, useContext, useCallback, useEffect} from 'react';
 import Navbar from "../home-page/components/navbar/NavBar";
@@ -43,24 +40,26 @@ function ContinueWatching({title}) {
 
     async function removeFromFavorite(movieId) {
       try {
-        const response = await request('api/movie/remove-from-favorite', 'POST', { userId: auth.userId, movieId: movieId }, 
+         await request('api/movie/remove-from-favorite', 'POST', { userId: auth.userId, movieId: movieId }, 
         {
           Authorization: `Bearer ${auth.token}`
       });
       getMovies();
-      // eslint-disable-next-line no-empty
-      } catch (e) {}
+      } catch (e) {
+         // throw e;
+      }
     }
 
     async function removeFromContinueWatching(movieId, movieType) {
       try {
-        const response = await request('api/movie/remove-from-contunue-watching', 'POST', { userId: auth.userId, movieId: movieId, isSerial: movieType}, 
+         await request('api/movie/remove-from-contunue-watching', 'POST', { userId: auth.userId, movieId: movieId, isSerial: movieType}, 
         {
           Authorization: `Bearer ${auth.token}`
       });
       getMovies();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
+      } catch (e) {
+        // throw e;
+      }
     }
 
     useEffect(() => {
@@ -72,7 +71,7 @@ function ContinueWatching({title}) {
       <Navbar />
       <h2>{title}</h2>
       <div className={styles.wrapper}>
-        {movies.map( (movie, index) => (<Item key={movie?._id} movie={movie} removeControl={() => title === 'Continue Watching' ? removeFromContinueWatching(movie?._id, movie?.type === 'Serial') : removeFromFavorite(movie?._id)} index={index}/>))}
+        {movies.map( (movie) => (<Item key={movie?._id} movie={movie} removeControl={() => title === 'Continue Watching' ? removeFromContinueWatching(movie?._id, movie?.type === 'Serial') : removeFromFavorite(movie?._id)} />))}
       </div>
     </div>
   );

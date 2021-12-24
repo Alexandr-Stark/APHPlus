@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import styles from "./styles.module.scss";
 import {
   PlayArrow
@@ -6,7 +5,7 @@ import {
 import { useState } from "react";
 import { Link } from 'react-router-dom';
 
-export default function SeasonItem({ index, movieId, season, episode }) {
+export default function SeasonItem({ index, movieId, episode }) {
   const [isHovered, setIsHovered] = useState(false);
   return (
     <div
@@ -32,7 +31,6 @@ export default function SeasonItem({ index, movieId, season, episode }) {
             </div>
             <div className={styles.itemInfoTop}>
               <span>{episode?.episodeNumber}. {episode?.title}</span>
-              {/* <span>1 hour 14 mins</span> */}
               <span className={styles.limit}>{episode?.ageRating}+</span>
               <span>{new Date(episode?.releaseDate).getFullYear()}</span>
             </div>

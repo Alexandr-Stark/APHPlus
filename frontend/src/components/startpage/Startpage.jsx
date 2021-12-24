@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import Adverts from './components/Adverts/Adverts';
 import styles from './styles.module.scss';
@@ -7,7 +6,6 @@ import Faq from './components/FAQ/Faq';
 import Footer from './components/Footer/Footer';
 
 function Start() {
-  //<FooterContainer />
   return (
     <div className={styles.body}>
       <div className={styles.headerContainer}>

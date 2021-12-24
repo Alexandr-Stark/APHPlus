@@ -112,7 +112,7 @@ movieRouter.post('/remove-from-favorite', auth, async (request, response) => {
   }
 });
 
-movieRouter.get('/my-list/:userId', /*auth,*/ async (request, response) => {
+movieRouter.get('/my-list/:userId', auth, async (request, response) => {
   try {
     const favorites = await Favorite.findOne({ userId: request.params.userId });
     response.status(200).json(favorites.movies);
@@ -124,7 +124,7 @@ movieRouter.get('/my-list/:userId', /*auth,*/ async (request, response) => {
   }
 });
 
-movieRouter.post('/remove-from-contunue-watching', /*auth,*/ async (request, response) => {
+movieRouter.post('/remove-from-contunue-watching', auth, async (request, response) => {
   try {
     const { userId, movieId, isSerial } = request.body;
 
@@ -344,23 +344,6 @@ movieRouter.post('/video-current-time', auth, async (request, response) => {
     console.log(error);
   }
 });
-
-// movieRouter.post('/create/genre', async (request, response) => {
-//   try {
-//     const { title } = request.body;
-//     const genre = new Genre({
-//       title,
-//     });
-
-//     await genre.save();
-//     response.status(201).json({ message: `Genre - ${title} is created` });
-//   } catch (error) {
-//     response
-//       .status(500)
-//       .json({ message: 'Something went wrong, try again...' });
-//     console.log(error);
-//   }
-// });
 
 movieRouter.post('/create/actor', async (request, response) => {
   try {
