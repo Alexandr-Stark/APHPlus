@@ -71,14 +71,15 @@ useEffect(() => {
               </Link>
             </div>
             <div className={styles.itemInfoTop}>
-              <span>1 hour 14 mins</span>
-              <span className={styles.limit}>+16</span>
-              <span>1999</span>
+              {isSerial &&  <span>{movie?.seasons.length} seasons</span>}
+              <span className={styles.limit}>{movie?.ageRating}+</span>
+              <span>{new Date(movie?.releaseDate).getFullYear()}</span>
+              <span className={styles.rating}>| {movie?.apiIMDbId} <p>⭐</p></span>
             </div>
             <div className={styles.desc}>
             {movie?.movieDescription}
             </div>
-            <div className={styles.genre}>Action</div>
+            <div className={styles.genre}>{movie?.genres.map( (i, ind) => ind === movie?.genres.length - 1 ? ` ${i.title}` : ` ${i.title} • `)}</div>
           </div>
         </div>
       )}

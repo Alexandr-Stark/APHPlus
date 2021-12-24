@@ -69,6 +69,14 @@
           font-size: 14px;
           font-weight: 600;
           color: gray;
+          .rating {
+            margin-left: 10px;
+            color: #46d369;
+            > p{
+              display: inline;
+              color: rgb(255, 187, 0);
+            }
+          }
 
           .limit {
             border: 1px solid gray;
